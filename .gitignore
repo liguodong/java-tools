@@ -1,0 +1,23 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.class
+gradlew
+gradle/
+build/
+bin/
+out/
+.gradle/
+# Package Files #
+*.war
+*.ear
+*.iml
+# Localhost Temporary Files
+.DS_Store
+.project
+.settings
+.classpath
+*.log
+*.bat
+.idea/
+target/
+libs/
+.Rproj.user

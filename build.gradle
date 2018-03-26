@@ -1,0 +1,57 @@
+allprojects {
+    group 'guodong.li'
+    version '1.0'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'maven'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        mavenLocal()
+        maven {
+            url "http://nexus.parllay.cn/repository/maven-public/"
+        }
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+        mavenCentral()
+    }
+
+    javadoc {
+        classpath += sourceSets.main.compileClasspath
+        source += sourceSets.main.allJava
+    }
+}
+
+subprojects {
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+        compile group: 'com.alibaba', name: 'fastjson', version: '1.2.17'
+        compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.0'
+        compile('joda-time:joda-time:2.9.7')
+    }
+}
+
+project(':java-basic') {
+    ext {
+        springBootVersion = '1.4.3.RELEASE'
+    }
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    }
+}
+

@@ -1,0 +1,3 @@
+rootProject.name = 'java-tools'
+include 'java-basic'
+
